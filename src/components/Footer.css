@@ -1,0 +1,94 @@
+.foot {
+  background: var(--ink);
+  color: var(--paper);
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  padding-bottom: 1.5rem;
+  border-top: 6px solid var(--khata-red);
+}
+
+.foot__inner {
+  display: grid;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(244, 241, 227, 0.2);
+}
+
+@media (min-width: 860px) {
+  .foot__inner {
+    grid-template-columns: 1.4fr 0.8fr 0.8fr;
+    align-items: start;
+  }
+}
+
+.foot__name {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+  line-height: 1;
+}
+
+.foot__name span {
+  color: var(--haldi);
+}
+
+.foot__line {
+  margin: 0;
+  max-width: 38ch;
+  font-size: 0.9rem;
+  color: rgba(244, 241, 227, 0.72);
+}
+
+.foot__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.foot__nav a {
+  text-decoration: none;
+  color: rgba(244, 241, 227, 0.8);
+  width: fit-content;
+  border-bottom: 1px solid transparent;
+}
+
+.foot__nav a:hover {
+  color: var(--paper);
+  border-bottom-color: var(--haldi);
+}
+
+.foot__actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.foot__btn {
+  border-color: rgba(244, 241, 227, 0.6);
+  color: var(--paper);
+}
+
+.foot__btn:hover {
+  box-shadow: 3px 3px 0 rgba(244, 241, 227, 0.35);
+}
+
+.foot__btn.btn--haldi {
+  color: var(--ink);
+  border-color: var(--haldi);
+}
+
+.foot__base {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1.25rem;
+  font-family: var(--font-figure);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 227, 0.55);
+}

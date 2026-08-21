@@ -1,0 +1,52 @@
+/* ------------------------------------------------------------------
+   MandiBuddy design tokens
+   Change a value here and it changes everywhere on the page.
+   ------------------------------------------------------------------ */
+
+:root {
+  /* Colour — a bahi-khata: ink on ruled paper, red cloth spine, haldi tag */
+  --ink: #101a26;
+  --ink-2: #1b2a3a;
+  --ink-3: #3d4d5c;
+  --paper: #f4f1e3;
+  --paper-2: #e9e5d3;
+  --paper-3: #dcd7c1;
+  --khata-red: #9e1b14;
+  --khata-red-soft: #c4483f;
+  --haldi: #e3a008;
+  --green: #2c5540;
+  --rule: #c6d2c0; /* the faint green rule of ledger paper */
+  --rule-dark: #2a3a48;
+
+  /* Type */
+  --font-display: 'Khand', 'Trebuchet MS', sans-serif;
+  --font-body: 'Karla', system-ui, -apple-system, sans-serif;
+  --font-figure: 'Courier Prime', 'Courier New', monospace;
+
+  --step--1: clamp(0.78rem, 0.76rem + 0.1vw, 0.85rem);
+  --step-0: clamp(0.98rem, 0.95rem + 0.15vw, 1.06rem);
+  --step-1: clamp(1.15rem, 1.08rem + 0.35vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.35rem + 0.75vw, 2rem);
+  --step-3: clamp(2.1rem, 1.7rem + 2vw, 3.2rem);
+  --step-4: clamp(2.6rem, 1.9rem + 3.2vw, 4.5rem);
+
+  /* Layout */
+  --measure: 1180px;
+  --gutter: clamp(1.1rem, 4vw, 3.5rem);
+  --nav-h: 68px;
+  --radius: 4px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

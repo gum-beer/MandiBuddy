@@ -1,0 +1,183 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* so anchor jumps don't hide the heading under the fixed nav */
+  scroll-padding-top: calc(var(--nav-h) + 12px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0 0 1rem;
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--haldi);
+  outline-offset: 3px;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+/* ---------- shared layout primitives ---------- */
+
+.shell {
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+  scroll-margin-top: var(--nav-h);
+  position: relative;
+}
+
+/* The ledger head: a page number, a title, and a rule — the way an entry
+   is opened in a bahi-khata. Used at the top of every section. */
+.ledger-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 0.5rem;
+  margin-bottom: clamp(1.75rem, 4vw, 3rem);
+}
+
+.ledger-head__folio {
+  font-family: var(--font-figure);
+  font-size: var(--step--1);
+  color: var(--khata-red);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ledger-head__title {
+  font-size: var(--step-3);
+  flex: 1;
+}
+
+.ledger-head__note {
+  font-size: var(--step--1);
+  color: var(--ink-3);
+  text-align: right;
+  max-width: 22ch;
+  display: none;
+}
+
+@media (min-width: 780px) {
+  .ledger-head__note {
+    display: block;
+  }
+}
+
+/* Ruled paper background, used behind full sections */
+.ruled {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 33px,
+    var(--rule) 33px,
+    var(--rule) 34px
+  );
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- shared button ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--step--1);
+  letter-spacing: 0.02em;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: transform 0.15s var(--ease), background-color 0.15s var(--ease),
+    color 0.15s var(--ease), box-shadow 0.15s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn--solid {
+  background: var(--khata-red);
+  border-color: var(--khata-red);
+  color: var(--paper);
+}
+
+.btn--solid:hover {
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.btn--haldi {
+  background: var(--haldi);
+  border-color: var(--ink);
+  color: var(--ink);
+}

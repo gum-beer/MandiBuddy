@@ -1,0 +1,154 @@
+.patti {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 2px;
+  padding: 1.25rem 1.25rem 0;
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+/* torn-receipt notch along the top */
+.patti::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--khata-red) 0 10px,
+    transparent 10px 20px
+  );
+}
+
+.patti__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.patti__eyebrow {
+  font-family: var(--font-figure);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--khata-red);
+  margin: 0 0 0.15rem;
+}
+
+.patti__farmer {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.patti__meta {
+  margin: 0.3rem 0 0;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+}
+
+.patti__stamp {
+  font-family: var(--font-figure);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--khata-red);
+  border: 1.5px solid var(--khata-red);
+  border-radius: 3px;
+  padding: 0.2rem 0.4rem;
+  transform: rotate(-4deg);
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.patti__block {
+  padding-block: 0.6rem;
+  border-bottom: 1px dashed var(--paper-3);
+}
+
+.patti__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.2rem;
+  font-size: 0.85rem;
+}
+
+.patti__row.is-muted .patti__value {
+  color: var(--ink-3);
+}
+
+.patti__row.is-strong {
+  font-weight: 700;
+}
+
+.patti__label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.patti__note {
+  font-family: var(--font-figure);
+  font-style: normal;
+  font-size: 0.68rem;
+  color: var(--ink-3);
+}
+
+.patti__value {
+  font-family: var(--font-figure);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.patti__rate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 0.6rem;
+  border-bottom: 1px dashed var(--paper-3);
+  font-size: 0.85rem;
+}
+
+.patti__rate-value {
+  font-family: var(--font-figure);
+  font-weight: 700;
+  background: var(--haldi);
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+}
+
+.patti__rate-value small {
+  font-weight: 400;
+  font-size: 0.7rem;
+}
+
+.patti__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-inline: -1.25rem;
+  margin-top: 0.75rem;
+  padding: 0.9rem 1.25rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.patti__total-label {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+}
+
+.patti__total-value {
+  font-family: var(--font-figure);
+  font-weight: 700;
+  font-size: 1.35rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--haldi);
+}
