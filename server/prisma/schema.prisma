@@ -1,0 +1,134 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Test-only auth. Passwords are stored in plain text on purpose — real
+// hashing + sessions/JWT come later. This model and the abc/abc seed row
+// are placeholders, not meant to carry real users.
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Supplier {
+  id             Int      @id @default(autoincrement())
+  // Nullable so the unique constraint doesn't collide on the brief moment
+  // between insert and the follow-up update that fills in the real
+  // sequential code (see SuppliersService.create) — Postgres allows
+  // multiple NULLs under a unique index.
+  code           String?  @unique
+  name           String
+  nameHindi      String?
+  photoPath      String?
+  addressLine1   String
+  addressLine2   String?
+  city           String
+  state          String?
+  mobile1        String
+  guarantorName  String?
+  guarantorPhone String?
+  createdAt      DateTime       @default(now())
+  arrivalEntries ArrivalEntry[]
+}
+
+// One vehicle/delivery's worth of stock from one supplier on one date.
+// "Party Stock" vs "Self Purchase" is stored as a plain string, not an
+// enum — it's a two-value dropdown per the spec, not a domain concept
+// with its own behaviour, so a Postgres enum migration for it isn't
+// worth the ceremony.
+model ArrivalEntry {
+  id            Int             @id @default(autoincrement())
+  date          DateTime        @db.Date
+  arrivalType   String
+  vehicleNumber String
+  supplierId    Int
+  supplier      Supplier        @relation(fields: [supplierId], references: [id])
+  items         ArrivalItem[]
+  charges       ArrivalCharge[]
+  createdAt     DateTime        @default(now())
+}
+
+// itemName and crateType are plain strings on purpose — there's no Items
+// or Crate master yet (that's its own future spec), so this doesn't fake
+// a lookup relationship that doesn't exist.
+model ArrivalItem {
+  id             Int          @id @default(autoincrement())
+  arrivalEntryId Int
+  arrivalEntry   ArrivalEntry @relation(fields: [arrivalEntryId], references: [id], onDelete: Cascade)
+  itemName       String
+  // Unique per (date + supplier) across the whole arrival book, not just
+  // within one entry — enforced in SuppliersService-style app logic
+  // (auto-suffixed -1/-2/...), not a DB constraint, since the scope spans
+  // multiple ArrivalEntry rows for the same supplier/date.
+  lotNo          String
+  nug            Int
+  isCrateForm    Boolean      @default(false)
+  crateType      String?
+  weight         Float?
+  stockSales     StockSale[]
+}
+
+model ArrivalCharge {
+  id             Int          @id @default(autoincrement())
+  arrivalEntryId Int
+  arrivalEntry   ArrivalEntry @relation(fields: [arrivalEntryId], references: [id], onDelete: Cascade)
+  // Freight | Labour today — a static, hardcoded list per the spec, not
+  // a master table. Extend the list in the DTO/frontend, not the schema.
+  chargeType     String
+  amount         Float
+}
+
+// One row = one "Add" click on the Stock Sale page: a specific quantity
+// sold off a specific arrival lot to a specific customer.
+model StockSale {
+  id            Int         @id @default(autoincrement())
+  date          DateTime    @db.Date
+  arrivalItemId Int
+  arrivalItem   ArrivalItem @relation(fields: [arrivalItemId], references: [id])
+  // Free text, not a Customer master relation (no Customer master exists
+  // yet) — defaults to "Cash" per the spec's built-in dropdown option.
+  customerName  String      @default("Cash")
+  nug           Int
+  weight        Float?
+  // "Nug" | "Weight" — the weight/container toggle from the spec.
+  unitType      String
+  customerRate  Float
+  supplierRate  Float
+  basicAmount   Float
+  // Snapshotted amounts, computed at sale time from whatever
+  // CommissionSettings held then — not a live join to settings, so a later
+  // change to the global rates never rewrites history for past sales.
+  commissionAmount Float    @default(0)
+  marketFeesAmount Float    @default(0)
+  rdfAmount        Float    @default(0)
+  lagaAmount       Float    @default(0)
+  // = basicAmount + commissionAmount + marketFeesAmount + rdfAmount + lagaAmount.
+  // Bardana isn't in this sum yet — its mechanism hasn't been defined.
+  netAmount     Float
+  createdAt     DateTime    @default(now())
+}
+
+// One global row of default commission/fee rates for Stock Sale, editable
+// from the page but not tied to any one date or sale — per the spec:
+// "when I set it to certain values it should remain the same throughout
+// even when I open stock sale on a different date." Each StockSale still
+// snapshots its own resolved amounts (above), so this row can be edited
+// going forward without touching past sales.
+model CommissionSettings {
+  id            Int      @id @default(1)
+  commissionPct Float    @default(0)
+  marketFeesPct Float    @default(0)
+  rdfPct        Float    @default(0)
+  lagaPerNug    Float    @default(0)
+  // Present in the schema, not yet in the UI or the Net Amount formula —
+  // its mechanism (flat? per-unit? percentage?) hasn't been defined yet.
+  bardanaAmount Float    @default(0)
+  updatedAt     DateTime @updatedAt
+}
