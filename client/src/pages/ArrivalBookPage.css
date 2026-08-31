@@ -1,0 +1,13 @@
+.arrival-book__status {
+  color: var(--ink-3);
+  font-style: italic;
+}
+
+.arrival-book__row-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.arrival-book__row-actions a {
+  text-decoration: none;
+}
