@@ -87,8 +87,26 @@ never present them as authoritative.
   disk (`server/uploads/`), which won't survive a real deploy — see
   `docs/01-auth-and-supplier-master.md` §4 for the full deferred list.
 - Arrival Entry / Arrival Book / Stock Sale / Sale Register exist (`docs/02-…`).
-  The commission panel (Cm%/MarketFees/RDF/Bardana/Laga → Net Amount) is
-  intentionally not built — `netAmount` is a placeholder copy of `basicAmount`
-  until that's signed off; see `docs/02-…` §6 before touching it.
+  The commission panel is now built — `StockSalePage.jsx` renders it and
+  `stock-sales.service.ts` computes `netAmount` from Cm%/MarketFees/RDF/Laga
+  (no Bardana yet), not a placeholder copy of `basicAmount` anymore.
 - No Items, Crate, or Customer master tables exist — item/crate/customer are
   plain text fields until those get their own spec, same as Supplier did.
+- No tenant scoping: `Supplier`, `ArrivalEntry`, `ArrivalItem`, `StockSale` have
+  no `userId`, and `CommissionSettings` is one global `@id @default(1)` row.
+  Two signed-up arhtiyas currently share all of each other's data. Needs a real
+  auth identity on the request first (see below) — do this before adding more
+  data-bearing features, not after.
+- Auth has no server-side enforcement: no `@UseGuards` anywhere in `server/src`,
+  every controller is reachable by anyone who can hit port 3000.
+  `ProtectedRoute.jsx` only checks a localStorage flag — it says so in its own
+  comment, it is not a security boundary. Blocks tenant scoping above.
+- `client/` has no ESLint/Prettier config (server does). The four
+  `eslint-disable-line react-hooks/exhaustive-deps` in `StockSalePage.jsx`
+  suppress a rule that isn't even installed on this side of the repo.
+- `StockSalePage.jsx` is ~435 lines / ~19 `useState` calls — the
+  commission-settings panel inside it (own fetch, own draft state, own save
+  path) is a good candidate to extract first.
+- No tests anywhere except the Nest scaffold's `app.controller.spec.ts`. Net
+  amount calc, lot-number suffixing, and the oversell guard are the
+  highest-value untested surface — pure logic, real money on the line.
