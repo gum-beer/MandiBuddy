@@ -1,0 +1,66 @@
+.app-layout {
+  min-height: 100vh;
+  background-color: var(--paper);
+}
+
+.app-layout__bar {
+  border-bottom: 2px solid var(--ink);
+  background-color: var(--paper);
+}
+
+.app-layout__shell {
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.app-layout__bar .app-layout__shell {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+}
+
+.app-layout__brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--step-1);
+  color: var(--khata-red);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.app-layout__nav {
+  display: flex;
+  gap: 1.25rem;
+  flex: 1;
+}
+
+.app-layout__link {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--step--1);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.app-layout__link:hover {
+  color: var(--khata-red);
+}
+
+.app-layout__user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.app-layout__username {
+  font-family: var(--font-figure);
+  font-size: var(--step--1);
+  color: var(--ink-3);
+}
+
+.app-layout__content {
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+}
