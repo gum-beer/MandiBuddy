@@ -181,3 +181,81 @@ svg {
   border-color: var(--ink);
   color: var(--ink);
 }
+
+/* ---------- shared app-screen primitives ----------
+   Added after a review found five near-identical copies of each of these
+   scattered across page CSS files (see docs/03-client-code-review.md).
+   These are the app's (post-login) equivalents of .btn/.ledger-head above. */
+
+.sub-head {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border-bottom: 1px solid var(--rule-dark);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+
+.form-error {
+  color: var(--khata-red);
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+}
+
+.cell-figure {
+  font-family: var(--font-figure);
+  font-variant-numeric: tabular-nums;
+}
+
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--paper-2);
+  font-size: var(--step--1);
+}
+
+.ledger-table th,
+.ledger-table td {
+  text-align: left;
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid var(--rule-dark);
+  white-space: nowrap;
+}
+
+.ledger-table thead th {
+  font-weight: 800;
+  background-color: var(--paper-3);
+  border-bottom: 2px solid var(--ink);
+}
+
+.ledger-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.ledger-input {
+  width: 100%;
+  font: inherit;
+  font-family: var(--font-figure);
+  padding: 0.55rem 0.65rem;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background-color: var(--paper-2);
+  color: var(--ink);
+}
+
+.ledger-input:focus-visible {
+  outline: 3px solid var(--haldi);
+  outline-offset: 1px;
+}
+
+.ledger-input:disabled {
+  opacity: 0.6;
+}

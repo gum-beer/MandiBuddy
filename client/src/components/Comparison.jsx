@@ -5,7 +5,7 @@ export default function Comparison() {
   return (
     <section className="section compare" id="why">
       <div className="shell">
-        <header className="ledger-head ledger-head--dark">
+        <header className="ledger-head">
           <span className="ledger-head__folio">Folio 02</span>
           <h2 className="ledger-head__title">Why we had to build it</h2>
           <p className="ledger-head__note">
