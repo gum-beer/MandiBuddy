@@ -1,0 +1,39 @@
+/* Design tokens — the single source of colour, type and motion values.
+   Copied from the MandiBuddy Khata concept artifact. Values only, no rules:
+   nothing in here paints anything by itself.
+
+   Deliberately a single light theme (ink on paper, like a physical bahi-khata).
+   There is no dark variant — that is a decision, not an omission. */
+
+:root {
+  /* Ink — text and dark surfaces */
+  --ink: #101a26;
+  --ink-2: #1b2a3a;
+  --ink-3: #3d4d5c;
+
+  /* Paper — white page ground, cream content surfaces */
+  --paper: #ffffff;
+  --paper-2: #e9e5d3;
+  --paper-3: #dcd7c1;
+
+  /* Accents */
+  --khata-red: #9e1b14;
+  --khata-red-soft: #c4483f;
+  --haldi: #e3a008;
+  --green: #2c5540;
+
+  /* Rules — borders and table lines */
+  --rule: #c6d2c0;
+  --rule-dark: #2a3a48;
+
+  /* Type — the device's own fonts (Segoe UI on Windows, Roboto on Android, San Francisco on
+     Apple): familiar, nothing to download, works offline. Figures use the same font with
+     equal-width digits (see .figure). */
+  --font-body: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--font-body);
+  --font-figure: var(--font-body);
+
+  /* Shape and motion */
+  --radius: 4px;
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+}

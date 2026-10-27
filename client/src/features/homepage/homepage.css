@@ -1,0 +1,201 @@
+/* Homepage styles — one block per component, in the order they appear on the
+   page: Navbar → Hero → Features → Comparison → About.
+   Shared values come from styles/tokens.css; .shell/.section/.btn from global.css. */
+
+/* ── Navbar ──────────────────────────────────────────────────────────── */
+
+.navbar {
+  --navbar-h: 4rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: var(--navbar-h);
+}
+
+.navbar__brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.navbar__brand span {
+  color: var(--haldi);
+}
+
+.navbar__nav {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.navbar__link {
+  color: var(--ink-2);
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+}
+
+.navbar__link:hover {
+  color: var(--khata-red);
+}
+
+@media (max-width: 860px) {
+  .navbar__inner {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .navbar__nav {
+    order: 3;
+    width: 100%;
+  }
+}
+
+/* ── Hero ────────────────────────────────────────────────────────────── */
+
+.hero {
+  padding: 5rem 0 4rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+/* clamp(min, preferred, max): scales with the viewport but never smaller than
+   2.4rem or larger than 4.6rem. */
+.hero__title {
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  max-width: 24ch;
+}
+
+.hero__title-accent {
+  color: var(--khata-red);
+}
+
+.hero__sub {
+  margin-top: 1.5rem;
+  max-width: 58ch;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+
+/* ── Features ────────────────────────────────────────────────────────── */
+
+.features__title {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+/* auto-fit + minmax: as many columns as fit at 260px or wider, so the grid
+   reflows from three columns to one without extra media queries. */
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feature {
+  background: var(--paper-2);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+}
+
+.feature__title {
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.feature__body {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+
+/* ── Comparison ──────────────────────────────────────────────────────── */
+
+.comparison {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.comparison__title {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+/* A table is the one thing allowed to scroll sideways on a phone. */
+.comparison__scroll {
+  overflow-x: auto;
+}
+
+.comparison__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.comparison__table th,
+.comparison__table td {
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--rule-dark);
+  white-space: nowrap;
+}
+
+.comparison__table thead th {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--haldi);
+  border-bottom: 2px solid var(--haldi);
+}
+
+.comparison__table tbody th {
+  font-weight: 700;
+}
+
+.comparison__table td {
+  color: #a9b6c2;
+}
+
+.comparison__yes {
+  color: var(--paper);
+  font-weight: 700;
+}
+
+/* ── About ───────────────────────────────────────────────────────────── */
+
+.about__title {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.about__body {
+  display: grid;
+  gap: 1rem;
+  max-width: 68ch;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink-3);
+}

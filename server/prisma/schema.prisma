@@ -1,0 +1,35 @@
+// Schema changes: edit this file → `npm run db:migrate:create -- --name <change>` → read the SQL
+// in prisma/migrations/ → `npm run db:migrate`. Never edit an applied migration (CLAUDE.md §5.8).
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// One trader = one tenant.
+model Tenant {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  users     User[]
+
+  @@map("tenants")
+}
+
+model User {
+  id        String   @id @default(uuid()) @db.Uuid
+  tenantId  String   @map("tenant_id") @db.Uuid
+  tenant    Tenant   @relation(fields: [tenantId], references: [id])
+  // Globally unique for now: the mock sign-in has no tenant field.
+  username  String   @unique
+  // Mock auth (CLAUDE.md §3): plain text on purpose until the auth phase.
+  password  String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@index([tenantId])
+  @@map("users")
+}

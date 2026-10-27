@@ -1,0 +1,283 @@
+{
+  "main": {
+    "id": "f3a1c227fee9bec8",
+    "type": "split",
+    "children": [
+      {
+        "id": "93cd8f24de444f02",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ad665f7d86649853",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Homepage/Homepage layout.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Homepage layout"
+            }
+          },
+          {
+            "id": "0a84a84b3a7ae723",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Stock arrival/arrival-entry-spec.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "arrival-entry-spec"
+            }
+          },
+          {
+            "id": "d916134058d95fed",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Stock Sale/Stock sale.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Stock sale"
+            }
+          },
+          {
+            "id": "e4f2bad4c045985a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Master databases/CRATE REGISTER.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "CRATE REGISTER"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c78d19ae6cd8f513",
+    "type": "split",
+    "children": [
+      {
+        "id": "07f4e47819d81734",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "eba796a522d61b00",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "3e6300ec4833e1c4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "1427251e0bd646a4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "87de0aeec8c367f7",
+    "type": "split",
+    "children": [
+      {
+        "id": "c3d1c76d037207f1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ac438bbfe15afe26",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Stock Sale/Stock sale.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "0d3f8b8f5669ec52",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Master databases/supplier-master-spec.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "7459b0f50336eceb",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c31031b032c0e4ad",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "3ad9a9b3f6e7a422",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Master databases/supplier-master-spec.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "ad665f7d86649853",
+  "lastOpenFiles": [
+    "Untitled.base",
+    "Homepage/Homepage layout.md",
+    "plan_layout_not_final.txt",
+    "plan.txt",
+    "Images_folder/Pasted image 20260917211516.png",
+    "Homepage/about.md",
+    "Homepage/features.md",
+    "Stock Sale/Stock sale.md",
+    "Images_folder/Pasted image 20260819010659.png",
+    "Images_folder/Pasted image 20260819010401.png",
+    "Images_folder/Pasted image 20260819010136.png",
+    "Images_folder/Pasted image 20260819010106.png",
+    "Images_folder/Pasted image 20260819010041.png",
+    "Images_folder/Pasted image 20260819010008.png",
+    "Images_folder/Pasted image 20260819005955.png",
+    "Images_folder/Pasted image 20260819005906.png",
+    "Images_folder/Pasted image 20260819005848.png",
+    "Homepage",
+    "Sign in and Sign up/sign up.md",
+    "Sign in and Sign up/sign in.md",
+    "Sign in and Sign up",
+    "Stock Report/Reporting and enhanced sales section.md",
+    "Stock Report/mandi-stock-sale-spec.md",
+    "Images_folder/mandi-stock-sale-spec.md",
+    "Crate management/Crate issue and receivable.md",
+    "Stock arrival/Arrival book.md",
+    "sales item.md",
+    "payments.md",
+    "Stock arrival/arrival-entry-spec.md",
+    "Master databases/CRATE REGISTER.md",
+    "Crate management",
+    "BILLING/Customer and supplier bills.md",
+    "Master databases/supplier-master-spec.md",
+    "SignIn and SignUp/SignUp page.md",
+    "Stock Report",
+    "SignIn and SignUp",
+    "BILLING",
+    "Redundant/architecture.md",
+    "Redundant/Untitled.canvas",
+    "Redundant/Flow_Of_Work.md",
+    "Master databases/Untitled 1.md",
+    "Master databases",
+    "Stock arrival/Arrival Entry.md",
+    "arrival-entry-spec.md",
+    "Flow_Of_Work.md",
+    "Redundant/Claude er diagrams/farmer_schema(1).md"
+  ]
+}

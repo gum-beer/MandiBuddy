@@ -1,0 +1,129 @@
+/* Page-wide reset + the few primitives every section reuses.
+   Everything else lives in a component's own CSS file. */
+
+@import './tokens.css';
+
+/* Padding and border count inside an element's declared width — the sane
+   box model. Without this, `width: 100%` plus padding overflows its parent. */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Anchor links (#about) land below the fixed navbar instead of under it.
+   The navbar sets its own height in --navbar-h. */
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Keyboard focus ring — visible for keyboard users, not on mouse clicks. */
+:focus-visible {
+  outline: 3px solid var(--haldi);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Numbers, codes and dates: monospace with equal-width digits so figures
+   line up in a column. */
+.figure {
+  font-family: var(--font-figure);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Horizontal container: caps line length and keeps a gutter on phones. */
+.shell {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* One homepage band. scroll-margin-top keeps the section heading clear of the
+   fixed navbar when an anchor link jumps here. */
+.section {
+  padding: 4.5rem 0;
+  scroll-margin-top: var(--navbar-h, 4rem);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.45rem 0.9rem;
+  text-decoration: none;
+  transition:
+    transform 0.15s var(--ease),
+    box-shadow 0.15s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.btn--solid {
+  background: var(--khata-red);
+  border-color: var(--khata-red);
+  color: var(--paper);
+}
+
+.btn--solid:hover {
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+/* Visible to screen readers only — for labels that would be noise on screen. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
